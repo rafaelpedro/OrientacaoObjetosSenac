@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class Agenda {
             switch (opcao) {
                 case 1 -> cadastroDeContato();
                 case 2 -> excluirContato();
-               // case 3 -> ;
+               // case 3 -> existe();
                 case 4 -> listarContato();
                 case 5 -> editarContato();
             }
@@ -73,8 +74,8 @@ public class Agenda {
         listarContato();
         do {
             System.out.println("Digite o código do contato que deseja editar: ");
-            Integer codProdutoAEditar = Integer.parseInt(ler.nextLine());
-            produtoASerEditado = todosOsContatos.stream().filter(produto -> produto.getCodigo() == codProdutoAEditar).findFirst();
+            Integer codContatoAEditar = Integer.parseInt(ler.nextLine());
+            produtoASerEditado = todosOsContatos.stream().filter(contato -> contato.getCodigo() == codContatoAEditar).findFirst();
             if (produtoASerEditado.isEmpty()) {
                 System.out.println("Código Inválido");
             }
@@ -83,4 +84,18 @@ public class Agenda {
         System.out.println("Digite o novo nome do contato: ");
         produtoASerEditado.get().setNome(ler.nextLine());
     }
+
+   /* public static boolean existe() {
+        Scanner ler = new Scanner(System.in);
+        // Contato contato = new Contato();
+        Optional<Contato> contatoASerEditado;
+        System.out.println("Digite o nome do contato que deseja procurar: ");
+        String nomeContatoAPesquisar = ler.nextLine();
+        contatoASerEditado = todosOsContatos.stream().filter(produto -> produto.getNome() == nomeContatoAPesquisar).findFirst();
+        if (contatoASerEditado.isEmpty()) {
+            return true;
+        }
+            return false;
+    }
+    */
 }
